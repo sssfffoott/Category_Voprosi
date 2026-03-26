@@ -1,0 +1,372 @@
+{
+  "categories": [
+    {
+      "name": "Python",
+      "questions": [
+        {
+          "text": "Что такое список?",
+          "options": [
+            "Массив",
+            "Словарь",
+            "Последовательность",
+            "Функция"
+          ],
+          "correct_index": 2,
+          "category": "Python"
+        },
+        {
+          "text": "Неизменяемый тип?",
+          "options": [
+            "list",
+            "dict",
+            "tuple",
+            "set"
+          ],
+          "correct_index": 2,
+          "category": "Python"
+        },
+        {
+          "text": "len() возвращает?",
+          "options": [
+            "Длину",
+            "Минимум",
+            "Максимум",
+            "Сумму"
+          ],
+          "correct_index": 0,
+          "category": "Python"
+        },
+        {
+          "text": "Оператор 'или'?",
+          "options": [
+            "and",
+            "or",
+            "not",
+            "is"
+          ],
+          "correct_index": 1,
+          "category": "Python"
+        },
+        {
+          "text": "Что такое lambda?",
+          "options": [
+            "Цикл",
+            "Анонимная функция",
+            "Класс",
+            "Импорт"
+          ],
+          "correct_index": 1,
+          "category": "Python"
+        },
+        {
+          "text": "Индексация с?",
+          "options": [
+            "1",
+            "0",
+            "-1",
+            "None"
+          ],
+          "correct_index": 1,
+          "category": "Python"
+        },
+        {
+          "text": "def используется для?",
+          "options": [
+            "Переменная",
+            "Функция",
+            "Класс",
+            "Импорт"
+          ],
+          "correct_index": 1,
+          "category": "Python"
+        },
+        {
+          "text": "append() делает?",
+          "options": [
+            "Удаляет",
+            "Добавляет в конец",
+            "Вставляет",
+            "Сортирует"
+          ],
+          "correct_index": 1,
+          "category": "Python"
+        },
+        {
+          "text": "True == 1?",
+          "options": [
+            "False",
+            "True",
+            "Error",
+            "None"
+          ],
+          "correct_index": 1,
+          "category": "Python"
+        },
+        {
+          "text": "Срезы включают?",
+          "options": [
+            "Конец",
+            "Начало",
+            "Оба",
+            "Ни один"
+          ],
+          "correct_index": 0,
+          "category": "Python"
+        }
+      ]
+    },
+    {
+      "name": "Алгоритмы",
+      "questions": [
+        {
+          "text": "Бинарный поиск O(?)",
+          "options": [
+            "O(n)",
+            "O(log n)",
+            "O(n^2)",
+            "O(1)"
+          ],
+          "correct_index": 1,
+          "category": "Алгоритмы"
+        },
+        {
+          "text": "Big O это?",
+          "options": [
+            "Время",
+            "Память",
+            "Худший случай",
+            "Лучший"
+          ],
+          "correct_index": 2,
+          "category": "Алгоритмы"
+        },
+        {
+          "text": "Пузырёк O(?)",
+          "options": [
+            "n log n",
+            "n^2",
+            "n",
+            "log n"
+          ],
+          "correct_index": 1,
+          "category": "Алгоритмы"
+        },
+        {
+          "text": "Root в дереве?",
+          "options": [
+            "Лист",
+            "Корень",
+            "Вершина",
+            "Узел"
+          ],
+          "correct_index": 1,
+          "category": "Алгоритмы"
+        },
+        {
+          "text": "DFS это?",
+          "options": [
+            "Ширина",
+            "Глубина",
+            "Оба",
+            "Нет"
+          ],
+          "correct_index": 1,
+          "category": "Алгоритмы"
+        },
+        {
+          "text": "Бинарный поиск O(?)",
+          "options": [
+            "O(n)",
+            "O(log n)",
+            "O(n^2)",
+            "O(1)"
+          ],
+          "correct_index": 1,
+          "category": "Алгоритмы"
+        },
+        {
+          "text": "Big O это?",
+          "options": [
+            "Время",
+            "Память",
+            "Худший случай",
+            "Лучший"
+          ],
+          "correct_index": 2,
+          "category": "Алгоритмы"
+        },
+        {
+          "text": "Пузырёк O(?)",
+          "options": [
+            "n log n",
+            "n^2",
+            "n",
+            "log n"
+          ],
+          "correct_index": 1,
+          "category": "Алгоритмы"
+        },
+        {
+          "text": "Root в дереве?",
+          "options": [
+            "Лист",
+            "Корень",
+            "Вершина",
+            "Узел"
+          ],
+          "correct_index": 1,
+          "category": "Алгоритмы"
+        },
+        {
+          "text": "DFS это?",
+          "options": [
+            "Ширина",
+            "Глубина",
+            "Оба",
+            "Нет"
+          ],
+          "correct_index": 1,
+          "category": "Алгоритмы"
+        }
+      ]
+    },
+    {
+      "name": "Базы данных",
+      "questions": [
+        {
+          "text": "PRIMARY KEY?",
+          "options": [
+            "Дубликаты",
+            "Уникальный",
+            "NULL",
+            "Внешний"
+          ],
+          "correct_index": 1,
+          "category": "БД"
+        },
+        {
+          "text": "JOIN типы?",
+          "options": [
+            "INNER",
+            "LEFT",
+            "RIGHT",
+            "Все"
+          ],
+          "correct_index": 3,
+          "category": "БД"
+        },
+        {
+          "text": "INDEX ускоряет?",
+          "options": [
+            "Вставку",
+            "Выборку",
+            "Удаление",
+            "Все"
+          ],
+          "correct_index": 1,
+          "category": "БД"
+        },
+        {
+          "text": "PRIMARY KEY?",
+          "options": [
+            "Дубликаты",
+            "Уникальный",
+            "NULL",
+            "Внешний"
+          ],
+          "correct_index": 1,
+          "category": "БД"
+        },
+        {
+          "text": "JOIN типы?",
+          "options": [
+            "INNER",
+            "LEFT",
+            "RIGHT",
+            "Все"
+          ],
+          "correct_index": 3,
+          "category": "БД"
+        },
+        {
+          "text": "INDEX ускоряет?",
+          "options": [
+            "Вставку",
+            "Выборку",
+            "Удаление",
+            "Все"
+          ],
+          "correct_index": 1,
+          "category": "БД"
+        },
+        {
+          "text": "PRIMARY KEY?",
+          "options": [
+            "Дубликаты",
+            "Уникальный",
+            "NULL",
+            "Внешний"
+          ],
+          "correct_index": 1,
+          "category": "БД"
+        },
+        {
+          "text": "JOIN типы?",
+          "options": [
+            "INNER",
+            "LEFT",
+            "RIGHT",
+            "Все"
+          ],
+          "correct_index": 3,
+          "category": "БД"
+        },
+        {
+          "text": "INDEX ускоряет?",
+          "options": [
+            "Вставку",
+            "Выборку",
+            "Удаление",
+            "Все"
+          ],
+          "correct_index": 1,
+          "category": "БД"
+        },
+        {
+          "text": "PRIMARY KEY?",
+          "options": [
+            "Дубликаты",
+            "Уникальный",
+            "NULL",
+            "Внешний"
+          ],
+          "correct_index": 1,
+          "category": "БД"
+        },
+        {
+          "text": "JOIN типы?",
+          "options": [
+            "INNER",
+            "LEFT",
+            "RIGHT",
+            "Все"
+          ],
+          "correct_index": 3,
+          "category": "БД"
+        },
+        {
+          "text": "INDEX ускоряет?",
+          "options": [
+            "Вставку",
+            "Выборку",
+            "Удаление",
+            "Все"
+          ],
+          "correct_index": 1,
+          "category": "БД"
+        }
+      ]
+    }
+  ],
+  "results": []
+}
