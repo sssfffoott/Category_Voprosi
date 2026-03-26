@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 from models import Category
 
+
 class DataManager:
     def __init__(self, filename='quiz_data.json'):
         self.filename = filename
@@ -30,10 +31,12 @@ class DataManager:
         try:
             with open(self.filename, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
+            print(f"Сохранено: {len(self.categories)} категорий")  # отладка
         except Exception as e:
             print(f"Ошибка сохранения: {e}")
 
     def add_category(self, category):
+        self.categories = [c for c in self.categories if c.name != category.name]
         self.categories.append(category)
         self.save_data()
 
@@ -45,11 +48,12 @@ class DataManager:
         return next((c for c in self.categories if c.name == name), None)
 
     def add_result(self, user, score, total):
+        percent = round((score / total) * 100, 1)
         self.results.append({
             'time': datetime.now().strftime('%Y-%m-%d %H:%M'),
             'user': user,
             'score': score,
             'total': total,
-            'percent': round((score/total)*100, 1)
+            'percent': percent
         })
         self.save_data()

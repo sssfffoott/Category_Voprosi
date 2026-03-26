@@ -15,7 +15,13 @@ class Question:
 
     @classmethod
     def from_dict(cls, data):
-        return cls(data['text'], data['options'], data['correct_index'], data['category'])
+        return cls(
+            data['text'],
+            data['options'],
+            data['correct_index'],
+            data['category']
+        )
+
 
 class Category:
     def __init__(self, name, questions):
