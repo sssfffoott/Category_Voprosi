@@ -9,102 +9,84 @@ class AdminPanel:
 
     def show_menu(self):
         self.app.create_frame()
-        
-        # Создаем контейнер для центрирования
-        container = tk.Frame(self.app.frame, bg='lightblue')
-        container.pack(fill=tk.BOTH, expand=True)
-        
-        title = tk.Label(container, text="АДМИНИСТРАТОР",
+        title = tk.Label(self.app.frame, text="АДМИНИСТРАТОР",
                          font=('Arial', 24, 'bold'), bg='lightblue')
-        title.pack(pady=30)
+        title.pack(pady=40)
 
-        btn_frame1 = tk.Frame(container, bg='lightblue')
-        btn_frame1.pack(pady=10)
+        btn_frame1 = tk.Frame(self.app.frame)
+        btn_frame1.pack(pady=15)
         tk.Button(btn_frame1, text="Добавить тему",
                   command=self.add_category_window, bg='lightgreen',
-                  font=('Arial', 14), width=18, height=2).pack(side=tk.LEFT, padx=10)
+                  font=('Arial', 16), width=18, height=2).pack(side=tk.LEFT, padx=15)
         tk.Button(btn_frame1, text="Редактировать",
                   command=self.edit_category_window, bg='yellow',
-                  font=('Arial', 14), width=18, height=2).pack(side=tk.LEFT, padx=10)
+                  font=('Arial', 16), width=18, height=2).pack(side=tk.LEFT, padx=15)
 
-        btn_frame2 = tk.Frame(container, bg='lightblue')
-        btn_frame2.pack(pady=10)
+        btn_frame2 = tk.Frame(self.app.frame)
+        btn_frame2.pack(pady=15)
         tk.Button(btn_frame2, text="Удалить тему",
                   command=self.delete_category_window, bg='lightcoral',
-                  font=('Arial', 14), width=18, height=2).pack(side=tk.LEFT, padx=10)
+                  font=('Arial', 16), width=18, height=2).pack(side=tk.LEFT, padx=15)
         tk.Button(btn_frame2, text="Результаты",
                   command=self.show_results, bg='lightcyan',
-                  font=('Arial', 14), width=18, height=2).pack(side=tk.LEFT, padx=10)
+                  font=('Arial', 16), width=18, height=2).pack(side=tk.LEFT, padx=15)
 
-        tk.Button(container, text="Главное меню",
+        tk.Button(self.app.frame, text="Главное меню",
                   command=self.app.show_login, font=('Arial', 14),
-                  bg='orange').pack(pady=20)
+                  bg='orange').pack(pady=30)
 
     def add_category_window(self):
+        """Окно добавления темы (улучшенное)"""
         win = tk.Toplevel(self.app.root)
-        win.title("Новая тема")
+        win.title("Добавить тему")
         win.geometry("700x600")
-        win.minsize(600, 500)
+        
 
-        # Настройка сетки для масштабирования
-        win.grid_rowconfigure(4, weight=1)
-        win.grid_columnconfigure(0, weight=1)
-
-        tk.Label(win, text="Название:", font=('Arial', 14, 'bold')).grid(row=0, column=0, pady=10)
-        name_entry = tk.Entry(win, font=('Arial', 13), width=50)
-        name_entry.grid(row=1, column=0, pady=5)
-
-        tk.Label(win, text="Вопросы (текст|опц1|опц2|опц3|опц4|индекс):\nкаждый вопрос - новая строка",
-                 font=('Arial', 11), anchor='w', justify='left').grid(row=2, column=0, pady=(10, 5), padx=20)
-
-        text_area = tk.Text(win, font=('Arial', 10))
-        text_area.grid(row=3, column=0, pady=10, padx=20, sticky="nsew")
+        tk.Label(win, text="Название темы:", font=('Arial', 12, 'bold')).pack(pady=10)
+        name_entry = tk.Entry(win, font=('Arial', 12), width=50)
+        name_entry.pack(pady=5)
+        
+        tk.Label(win, text="Вопросы (каждый вопрос с новой строки):", 
+                 font=('Arial', 12, 'bold')).pack(pady=10)
+        tk.Label(win, text="Формат: текст вопроса | вариант1 | вариант2 | вариант3 | вариант4 | номер_правильного(0-4)", 
+                 font=('Arial', 9), fg='gray').pack()
+        
+        text_area = tk.Text(win, font=('Arial', 10), height=15)
+        text_area.pack(pady=10, padx=20, fill=tk.BOTH, expand=True)
+        
 
         def save():
             name = name_entry.get().strip()
             if not name:
-                messagebox.showerror("Ошибка", "Название не может быть пустым!")
+                messagebox.showerror("Ошибка", "Введите название темы!")
                 return
             if name in [c.name for c in self.app.data_manager.categories]:
-                messagebox.showerror("Ошибка", "Тема существует!")
+                messagebox.showerror("Ошибка", "Такая тема уже существует!")
                 return
-            if len(name) < 3:
-                messagebox.showerror("Ошибка", "Название короче 3 символов!")
-                return
-
-            questions = self.parse_questions(text_area.get("1.0", tk.END))
-            if len(questions) < 3:
-                messagebox.showerror("Ошибка", "Минимум 3 вопроса!")
-                return
-
-            for q in questions:
-                q.category = name
-
-            category = Category(name, questions)
-            self.app.data_manager.add_category(category)
-            messagebox.showinfo("Успех", f"Добавлено {len(questions)} вопросов!")
-            win.destroy()
-
-        tk.Button(win, text="СОХРАНИТЬ", command=save, bg='green',
-                  fg='white', font=('Arial', 14, 'bold'), width=20, height=2).grid(row=4, column=0, pady=20)
-
-    def parse_questions(self, text):
-        questions = []
-        for line in text.strip().split('\n'):
-            line = line.strip()
-            if '|' not in line or not line:
-                continue
-
-            parts = [p.strip() for p in line.split('|')]
-            if len(parts) == 6:
-                try:
-                    corr = int(parts[5])
-                    if 0 <= corr < 4:
-                        q = Question(parts[0], parts[1:5], corr, "")
-                        questions.append(q)
-                except (ValueError, IndexError):
+            
+            questions = []
+            for line in text_area.get("1.0", tk.END).strip().split('\n'):
+                if '|' not in line:
                     continue
-        return questions
+                parts = [p.strip() for p in line.split('|')]
+                if len(parts) == 6:
+                    try:
+                        q = Question(parts[0], parts[1:5], int(parts[5]), name)
+                        questions.append(q)
+                    except:
+                        continue
+            
+            if len(questions) < 3:
+                messagebox.showerror("Ошибка", "Добавьте минимум 3 вопроса!\nФормат: текст|вар1|вар2|вар3|вар4|индекс")
+                return
+            
+            self.app.data_manager.add_category(Category(name, questions))
+            messagebox.showinfo("Успех", f"Тема '{name}' добавлена! ({len(questions)} вопросов)")
+            win.destroy()
+        
+        tk.Button(win, text="СОХРАНИТЬ", command=save, 
+                  bg='green', fg='white', font=('Arial', 14, 'bold'),
+                  width=20, height=2).pack(pady=20)
 
     def edit_category_window(self):
         if not self.app.data_manager.categories:
@@ -112,28 +94,21 @@ class AdminPanel:
             return
 
         win = tk.Toplevel(self.app.root)
-        win.title("Редактировать тему")
+        win.title("Редактировать")
         win.geometry("700x600")
-        win.minsize(600, 500)
 
-        win.grid_rowconfigure(6, weight=1)
-        win.grid_columnconfigure(0, weight=1)
-
-        tk.Label(win, text="Выберите тему:", font=('Arial', 14, 'bold')).grid(row=0, column=0, pady=10)
+        tk.Label(win, text="Выберите тему:", font=('Arial', 14, 'bold')).pack(pady=15)
         combo = ttk.Combobox(win,
                              values=[c.name for c in self.app.data_manager.categories],
                              font=('Arial', 13), width=30, state='readonly')
-        combo.grid(row=1, column=0, pady=5)
+        combo.pack(pady=10)
 
-        tk.Label(win, text="Новое название:", font=('Arial', 14)).grid(row=2, column=0, pady=(10, 5))
+        tk.Label(win, text="Новое название:", font=('Arial', 14)).pack(pady=(20, 5))
         name_entry = tk.Entry(win, font=('Arial', 13), width=50)
-        name_entry.grid(row=3, column=0, pady=5)
+        name_entry.pack(pady=5)
 
-        tk.Label(win, text="Вопросы (текст|опц1|опц2|опц3|опц4|индекс):", 
-                 font=('Arial', 11)).grid(row=4, column=0, pady=(10, 5))
-        
         text_area = tk.Text(win, font=('Arial', 10))
-        text_area.grid(row=5, column=0, pady=10, padx=20, sticky="nsew")
+        text_area.pack(pady=10, padx=20, fill=tk.BOTH, expand=True)
 
         def load_data():
             cat = self.app.data_manager.get_category(combo.get())
@@ -146,22 +121,24 @@ class AdminPanel:
                     text_area.insert(tk.END, line + '\n')
 
         tk.Button(win, text="Загрузить", command=load_data,
-                  bg='blue', fg='white', font=('Arial', 12)).grid(row=1, column=0, pady=5)
+                  bg='blue', fg='white').pack(pady=10)
 
         def save():
-            questions = self.parse_questions(text_area.get("1.0", tk.END))
+            questions = []
+            for line in text_area.get("1.0", tk.END).strip().split('\n'):
+                if '|' not in line:
+                    continue
+                parts = [p.strip() for p in line.split('|')]
+                if len(parts) == 6:
+                    try:
+                        q = Question(parts[0], parts[1:5], int(parts[5]), name_entry.get().strip())
+                        questions.append(q)
+                    except:
+                        continue
             if len(questions) < 1:
                 messagebox.showerror("Ошибка", "Нет вопросов!")
                 return
-            new_name = name_entry.get().strip()
-            if not new_name:
-                messagebox.showerror("Ошибка", "Название не может быть пустым!")
-                return
-            
-            for q in questions:
-                q.category = new_name
-                
-            new_cat = Category(new_name, questions)
+            new_cat = Category(name_entry.get().strip(), questions)
             old_name = combo.get()
             if not old_name:
                 messagebox.showerror("Ошибка", "Сначала выберите тему!")
@@ -172,7 +149,7 @@ class AdminPanel:
             win.destroy()
 
         tk.Button(win, text="СОХРАНИТЬ", command=save, bg='green',
-                  fg='white', font=('Arial', 14, 'bold'), width=20).grid(row=6, column=0, pady=20)
+                  fg='white', font=('Arial', 14, 'bold')).pack(pady=20)
 
     def delete_category_window(self):
         if not self.app.data_manager.categories:
@@ -180,9 +157,8 @@ class AdminPanel:
             return
 
         win = tk.Toplevel(self.app.root)
-        win.title("Удалить тему")
+        win.title("Удалить")
         win.geometry("400x250")
-        win.resizable(False, False)
 
         tk.Label(win, text="Выберите тему для удаления:", font=('Arial', 14)).pack(pady=20)
         combo = ttk.Combobox(win,
@@ -195,44 +171,30 @@ class AdminPanel:
             if not name:
                 messagebox.showerror("Ошибка", "Сначала выберите тему!")
                 return
-            if messagebox.askyesno("Подтверждение", f"Удалить тему '{name}'?"):
-                self.app.data_manager.remove_category(name)
-                messagebox.showinfo("Успех", "Тема удалена!")
-                win.destroy()
+            self.app.data_manager.remove_category(name)
+            messagebox.showinfo("Успех", "Удалено!")
+            win.destroy()
 
         tk.Button(win, text="УДАЛИТЬ", command=delete, bg='red',
-                  fg='white', font=('Arial', 14, 'bold'), width=15).pack(pady=20)
+                  fg='white', font=('Arial', 14, 'bold')).pack(pady=20)
 
     def show_results(self):
         self.app.create_frame()
-        
-        container = tk.Frame(self.app.frame, bg='lightblue')
-        container.pack(fill=tk.BOTH, expand=True)
-        
-        title = tk.Label(container, text="РЕЗУЛЬТАТЫ",
+        title = tk.Label(self.app.frame, text="РЕЗУЛЬТАТЫ",
                          font=('Arial', 22, 'bold'), bg='lightblue')
-        title.pack(pady=20)
+        title.pack(pady=30)
 
         if not self.app.data_manager.results:
-            tk.Label(container, text="Нет результатов",
-                     font=('Arial', 18), fg='gray', bg='lightblue').pack(pady=50)
+            tk.Label(self.app.frame, text="Нет результатов",
+                     font=('Arial', 18), fg='gray').pack(pady=50)
         else:
-            # Создаем фрейм для таблицы с прокруткой
-            tree_frame = tk.Frame(container)
-            tree_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=10)
-            
-            scrollbar = ttk.Scrollbar(tree_frame)
-            scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-            
             cols = ('Время', 'Пользователь', 'Очки', '%')
-            tree = ttk.Treeview(tree_frame, columns=cols, show='headings', 
-                                yscrollcommand=scrollbar.set, height=15)
-            scrollbar.config(command=tree.yview)
+            tree = ttk.Treeview(self.app.frame, columns=cols, show='headings', height=15)
 
             for col in cols:
                 tree.heading(col, text=col)
-                tree.column(col, width=150, anchor='center')
-            tree.pack(fill=tk.BOTH, expand=True)
+                tree.column(col, width=120)
+            tree.pack(pady=20, padx=20, fill=tk.BOTH, expand=True)
 
             for result in sorted(self.app.data_manager.results,
                                  key=lambda x: x['time'], reverse=True)[:20]:
@@ -243,5 +205,5 @@ class AdminPanel:
                     f"{result['percent']}%"
                 ))
 
-        tk.Button(container, text="Админ панель",
-                  command=self.show_menu, font=('Arial', 14)).pack(pady=15)
+        tk.Button(self.app.frame, text="Админ панель",
+                  command=self.show_menu, font=('Arial', 14)).pack(pady=20)
