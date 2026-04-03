@@ -3,7 +3,7 @@
 1 Шаг
 переходим по ссылке на страничку проекта - https://github.com/sssfffoott/Category_Voprosi
 
-2 Шаг нажимаем на Releases - Vorposnik 1.1
+2 Шаг нажимаем на последнюю версию проекта
 
 
 3 Шаг После нажимаем на Main.exe
