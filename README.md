@@ -1,7 +1,7 @@
 Инструкция по скачиванию → запуску проекта
 
 1 Шаг
-переходим по ссылке на страничку проекта - https://github.com/sssfffoott/Category_Voprosi
+переходим по ссылке на последнюю версию проекта - (https://github.com/sssfffoott/Category_Voprosi/releases/tag/v-1.4)
 
 2 Шаг нажимаем на последнюю версию проекта
 
