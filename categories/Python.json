@@ -1,0 +1,115 @@
+{
+  "name": "Python",
+  "questions": [
+    {
+      "text": "Что такое список?",
+      "options": [
+        "Массив",
+        "Словарь",
+        "Последовательность",
+        "Функция"
+      ],
+      "correct_index": 2,
+      "category": "Python"
+    },
+    {
+      "text": "Неизменяемый тип?",
+      "options": [
+        "list",
+        "dict",
+        "tuple",
+        "set"
+      ],
+      "correct_index": 2,
+      "category": "Python"
+    },
+    {
+      "text": "len() возвращает?",
+      "options": [
+        "Длину",
+        "Минимум",
+        "Максимум",
+        "Сумму"
+      ],
+      "correct_index": 0,
+      "category": "Python"
+    },
+    {
+      "text": "Оператор 'или'?",
+      "options": [
+        "and",
+        "or",
+        "not",
+        "is"
+      ],
+      "correct_index": 1,
+      "category": "Python"
+    },
+    {
+      "text": "Что такое lambda?",
+      "options": [
+        "Цикл",
+        "Анонимная функция",
+        "Класс",
+        "Импорт"
+      ],
+      "correct_index": 1,
+      "category": "Python"
+    },
+    {
+      "text": "Индексация начинается с?",
+      "options": [
+        "1",
+        "0",
+        "-1",
+        "None"
+      ],
+      "correct_index": 1,
+      "category": "Python"
+    },
+    {
+      "text": "def используется для?",
+      "options": [
+        "Переменная",
+        "Функция",
+        "Класс",
+        "Импорт"
+      ],
+      "correct_index": 1,
+      "category": "Python"
+    },
+    {
+      "text": "append() делает?",
+      "options": [
+        "Удаляет",
+        "Добавляет в конец",
+        "Вставляет",
+        "Сортирует"
+      ],
+      "correct_index": 1,
+      "category": "Python"
+    },
+    {
+      "text": "True == 1?",
+      "options": [
+        "False",
+        "True",
+        "Error",
+        "None"
+      ],
+      "correct_index": 1,
+      "category": "Python"
+    },
+    {
+      "text": "Срезы включают?",
+      "options": [
+        "Конец",
+        "Начало",
+        "Оба",
+        "Ни один"
+      ],
+      "correct_index": 1,
+      "category": "Python"
+    }
+  ]
+}

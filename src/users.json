@@ -1,0 +1,87 @@
+{
+  "users": [
+    {
+      "username": "Крутышка",
+      "results": []
+    },
+    {
+      "username": "йоу",
+      "results": []
+    },
+    {
+      "username": "Крутой",
+      "results": []
+    },
+    {
+      "username": "попка",
+      "results": []
+    },
+    {
+      "username": "фыа",
+      "results": [
+        {
+          "time": "2026-04-03 00:17",
+          "category": "Python",
+          "score": 1,
+          "total": 10,
+          "percent": 10.0
+        }
+      ]
+    },
+    {
+      "username": "Крутой перец",
+      "results": []
+    },
+    {
+      "username": "Йоу",
+      "results": []
+    },
+    {
+      "username": "ЙОу",
+      "results": []
+    },
+    {
+      "username": "пупка",
+      "results": []
+    },
+    {
+      "username": "adm",
+      "results": []
+    },
+    {
+      "username": "asf",
+      "results": [
+        {
+          "time": "2026-04-02 23:52",
+          "category": "Python",
+          "score": 2,
+          "total": 10,
+          "percent": 20.0
+        }
+      ]
+    },
+    {
+      "username": "фаы",
+      "results": [
+        {
+          "time": "2026-04-02 23:51",
+          "category": "Python",
+          "score": 1,
+          "total": 10,
+          "percent": 10.0
+        },
+        {
+          "time": "2026-04-03 00:18",
+          "category": "Python",
+          "score": 3,
+          "total": 10,
+          "percent": 30.0
+        }
+      ]
+    },
+    {
+      "username": "123",
+      "results": []
+    }
+  ]
+}

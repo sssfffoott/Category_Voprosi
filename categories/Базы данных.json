@@ -1,0 +1,115 @@
+{
+  "name": "Базы данных",
+  "questions": [
+    {
+      "text": "PRIMARY KEY?",
+      "options": [
+        "Дубликаты",
+        "Уникальный",
+        "NULL",
+        "Внешний"
+      ],
+      "correct_index": 1,
+      "category": "Базы данных"
+    },
+    {
+      "text": "JOIN типы?",
+      "options": [
+        "INNER",
+        "LEFT",
+        "RIGHT",
+        "Все"
+      ],
+      "correct_index": 3,
+      "category": "Базы данных"
+    },
+    {
+      "text": "INDEX ускоряет?",
+      "options": [
+        "Вставку",
+        "Выборку",
+        "Удаление",
+        "Все"
+      ],
+      "correct_index": 1,
+      "category": "Базы данных"
+    },
+    {
+      "text": "SQL расшифровка?",
+      "options": [
+        "Structured Query Language",
+        "Simple Query Language",
+        "Standard Query Language",
+        "System Query Language"
+      ],
+      "correct_index": 0,
+      "category": "Базы данных"
+    },
+    {
+      "text": "DELETE vs TRUNCATE?",
+      "options": [
+        "Можно отменить",
+        "Быстрее",
+        "Оба",
+        "Ничего"
+      ],
+      "correct_index": 0,
+      "category": "Базы данных"
+    },
+    {
+      "text": "Что такое NULL?",
+      "options": [
+        "Ноль",
+        "Пусто",
+        "Не определено",
+        "Ошибка"
+      ],
+      "correct_index": 2,
+      "category": "Базы данных"
+    },
+    {
+      "text": "Нормализация это?",
+      "options": [
+        "Удаление дубликатов",
+        "Оптимизация",
+        "Разделение таблиц",
+        "Объединение"
+      ],
+      "correct_index": 0,
+      "category": "Базы данных"
+    },
+    {
+      "text": "ACID свойства?",
+      "options": [
+        "Atomicity",
+        "Consistency",
+        "Isolation",
+        "Все"
+      ],
+      "correct_index": 3,
+      "category": "Базы данных"
+    },
+    {
+      "text": "Что такое транзакция?",
+      "options": [
+        "Запрос",
+        "Группа операций",
+        "Таблица",
+        "Индекс"
+      ],
+      "correct_index": 1,
+      "category": "Базы данных"
+    },
+    {
+      "text": "VIEW это?",
+      "options": [
+        "Таблица",
+        "Виртуальная таблица",
+        "Индекс",
+        "Хранимая процедура"
+      ],
+      "correct_index": 1,
+      "category": "Базы данных"
+    }
+  ]
+}
